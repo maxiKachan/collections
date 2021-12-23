@@ -1,6 +1,7 @@
 package com.maximKachan.collections.list;
 
 
+import com.maximKachan.collections.map.MyMap;
 import com.maximKachan.collections.set.MySet;
 
 import java.util.Arrays;
@@ -35,20 +36,25 @@ public class ListsTest {
 //        System.out.println(list);
 //        list.removeAll(list2);
 //        System.out.println(list);
-        MySet<String> mySet = new MySet<>();
-        for (int i = 0; i < 11; i++){
-            System.out.println(mySet.add("a"));
-        }
-        mySet.add("b");
-        mySet.add("bs");
-        mySet.add("bd");
-        mySet.add("ba");
-        mySet.add("bf");
-        mySet.add("bq");
-        mySet.add("bw");
-        System.out.println(mySet.toString());
-        for (String s : mySet){
-            System.out.println(s);
-        }
+//        MySet<String> mySet = new MySet<>();
+//        for (int i = 0; i < 11; i++){
+//            System.out.println(mySet.add("a"));
+//        }
+//        mySet.add("b");
+//        mySet.add("bs");
+//        mySet.add("bd");
+//        mySet.add("ba");
+//        mySet.add("bf");
+//        mySet.add("bq");
+//        mySet.add("bw");
+//        System.out.println(mySet.toString());
+//        for (String s : mySet){
+//            System.out.println(s);
+//        }
+
+        MyMap<Integer, String> map = new MyMap<>();
+        map.put(1, "sadd");
+        System.out.println(map.get(1));
+        System.out.println(map.get(2));
     }
 }

@@ -2,7 +2,7 @@ package com.maximKachan.collections.set;
 
 import java.util.*;
 
-public class MySet<E> extends AbstractSet<E> {
+public class MySet<E> extends AbstractSet<E> implements Set<E>{
     private int size = 0;
     private Object[] elements;
     private static final int INITIAL_CAPACITY = 20;
