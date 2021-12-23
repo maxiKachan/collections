@@ -82,6 +82,22 @@ public class MyMap<K,V> extends AbstractMap<K,V> {
         return null;
     }
 
+    @Override
+    public V remove(Object key) {
+        int index = key.hashCode() % elements.length;
+        if (elements[index] != null){
+            List<Entry<K, V>> list = (List<Entry<K,V>>) elements[index];
+            for (int i = 0; i < list.size(); i++){
+                if (list.get(i).getKey().equals(key)) {
+                    V value = list.get(i).getValue();
+                    list.remove(i);
+                    return value;
+                }
+            }
+        }
+        return null;
+    }
+
     private void checkPopulation(){
         if (1.0*population/elements.length > MAX_POPULATE_LEVEL){
             initSet();
@@ -125,5 +141,21 @@ public class MyMap<K,V> extends AbstractMap<K,V> {
         public int hashCode() {
             return Objects.hash(key);
         }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("MyMap \n{ \n");
+        for (Object o : elements){
+            if (o != null){
+                List<Entry<K, V>> entries = (List<Entry<K,V>>) o;
+                for (Entry<K, V> entry : entries){
+                    sb.append("key=").append(entry.getKey()).append(" value=").append(entry.getValue()).append("\n");
+                }
+            }
+        }
+        sb.append("}");
+        return  sb.toString();
     }
 }

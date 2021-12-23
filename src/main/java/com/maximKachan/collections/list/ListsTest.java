@@ -56,5 +56,9 @@ public class ListsTest {
         map.put(1, "sadd");
         System.out.println(map.get(1));
         System.out.println(map.get(2));
+//        System.out.println(map.remove(1));
+//        System.out.println(map.remove(2));
+        map.put(234, "sdfg");
+        System.out.println(map);
     }
 }
