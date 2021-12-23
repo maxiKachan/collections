@@ -52,9 +52,7 @@ public class MyOwnArrayList<E> implements List<E> {
 
     @Override
     public boolean add(E e) {
-        if (size >= elements.length) {
-            expandCapacity();
-        }
+        checkCapacity();
         elements[size++] = e;
         return true;
     }
@@ -77,6 +75,12 @@ public class MyOwnArrayList<E> implements List<E> {
 
     private void moveElemInsert(int insertIndex) {
         System.arraycopy(elements, insertIndex, elements, insertIndex + 1, size - insertIndex);
+    }
+
+    private void checkCapacity(){
+        if (size >= elements.length) {
+            expandCapacity();
+        }
     }
 
     private void expandCapacity() {
@@ -153,6 +157,7 @@ public class MyOwnArrayList<E> implements List<E> {
     @Override
     public void add(int index, E element) {
         checkIndex(index);
+        checkCapacity();
         moveElemInsert(index);
         elements[index] = element;
         size++;
@@ -261,7 +266,8 @@ public class MyOwnArrayList<E> implements List<E> {
 
         @Override
         public E previous() {
-            if (previous > -1) {
+
+            if (previous == -1) {
                 throw new NoSuchElementException();
             }
             cursor--;
